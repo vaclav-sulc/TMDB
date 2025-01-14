@@ -23,6 +23,8 @@ namespace TMDB
 
         private async void Action_Click(object sender, RoutedEventArgs e)
         {
+            Action.Content = "Top Rated Movies";
+            Action.IsEnabled = false;
             var apiKey = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMTY3MDBiNDQyNzYzYzcwMDk5NDNkN2JhNzFmM2ZiYyIsIm5iZiI6MTczNjg2MDkxNy41NzUsInN1YiI6IjY3ODY2NGY1MjI1NjAyM2RmZDRlOTM0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eWUC5gr5PwKtpa5zjAVxRiEABF3u69KZIEqxQjroHFc";
             var url = "https://api.themoviedb.org/3/movie/top_rated";
 
@@ -42,7 +44,19 @@ namespace TMDB
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                Output.Text = body;
+
+                JObject json = JObject.Parse(body);
+                var results = json["results"];
+
+                foreach (var result in results)
+                {
+                    string title = result["title"].ToString();
+                    string releaseDate = result["release_date"].ToString();
+                    string voteAverage = result["vote_average"].ToString();
+                    string popularity = result["popularity"].ToString();
+
+                    MovieList.Items.Add($"\n\nTitle: {title}\nRelease date: {releaseDate}\nRating: {voteAverage}\nPopularity: {popularity}\n");
+                }
             }
         }
     }
