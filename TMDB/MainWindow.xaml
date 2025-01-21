@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Action"  Content="Click" FontSize="22" HorizontalAlignment="Left" Margin="311,30,0,0" VerticalAlignment="Top" Height="36" Width="190" Click="Action_Click"/>
-        <ListBox x:Name="MovieList" Margin="107,88,84,28" d:ItemsSource="{d:SampleData ItemCount=30}" />
+        <Button x:Name="TopRated"  Content="Top Rated Movies" FontSize="22" HorizontalAlignment="Left" Margin="156,30,0,0" VerticalAlignment="Top" Height="36" Width="178" Click="TopRated_Click"/>
+        <ListBox x:Name="MovieList" Margin="156,88,154,28" d:ItemsSource="{d:SampleData ItemCount=30}" />
+        <Button x:Name="Popular"  Content="Popular Movies" FontSize="22" HorizontalAlignment="Left" Margin="450,28,0,0" VerticalAlignment="Top" Height="36" Width="172" Click="Popular_Click"/>
+        <Button x:Name="NextPage" Content="Next Page" HorizontalAlignment="Left" Margin="664,217,0,0" VerticalAlignment="Top" Height="42" Width="83" Click="NextPage_Click"/>
+        <Button x:Name="PrevPage" Content="Previous Page" HorizontalAlignment="Left" Margin="63,217,0,0" VerticalAlignment="Top" Height="42" Width="76" Click="PrevPage_Click"/>
+        <TextBlock x:Name="Page" HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" Text="Page:" VerticalAlignment="Top" Height="34" Width="90" FontSize="22"/>
 
     </Grid>
 </Window>
